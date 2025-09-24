@@ -4,9 +4,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
-
 def fetch_hospitals(location_query):
+        
 
         try:
 # Use google maps API to get the hospitals in Nairobi 
@@ -23,10 +22,22 @@ def fetch_hospitals(location_query):
         try:
             geocode_result = gmaps.geocode(f'{location_query}, Nairobi', components={"country":"KE"})
             if not geocode_result:
-                print(f"Could not find location coordinated for '{location_query}'")
+                print(f"Could not find location coordinates for '{location_query}'")
                 return[]
             
             loc_coords = geocode_result[0]['geometry']['location']
+# check if the geocoded result is within Nairobi
+            is_in_nairobi = False
+            address_components = geocode_result[0].get('address_components', [])
+            for component in address_components:
+                if 'locality' in component['types'] and 'Nairobi' in component['long_name']:
+                    is_in_nairobi = True
+                    break
+                if not is_in_nairobi:
+                    print("Error: Please input a location within Nairobi County.")
+                    return[]
+            
+            
              
             # API  to find nearby hospitals
             places_result = gmaps.places_nearby(location=loc_coords, radius=5000, keyword='hospital') # 5 kilometers
@@ -99,7 +110,7 @@ if __name__ == '__main__':
         
 
         print("--- Real Hospital Search (using Google Maps API) ---")
-        location = input("Enter a location in Nairobi (e.g., Westlands, CBD): ")
+        location = input("Enter a location in Nairobi : ")
     
         if not location:
             print("No location entered. Exiting.")
@@ -117,6 +128,10 @@ if __name__ == '__main__':
                 print("=" * 40)
         else:
             print(f"\nSorry, no hospitals found for '{location}'.")
+
+    
+
+
 
 
 
