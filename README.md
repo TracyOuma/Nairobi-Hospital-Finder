@@ -1,4 +1,4 @@
-​  🚑 Nairobi Hospital Finder
+​ # 🚑 Nairobi Hospital Finder
 - ​This is a Python console application designed to help users quickly find hospitals within Nairobi County, Kenya, using the Google Maps Platform API.
 - ​The application allows users to input a specific location within Nairobi (e.g., "Westlands," "CBD") and returns a list of nearby hospitals, including their addresses, contact information, and public reviews.
 ​
