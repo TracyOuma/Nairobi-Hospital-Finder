@@ -18,7 +18,11 @@
 
 ✏ How to run:
   - You now execute the script directly from your terminal: python [your_script_name].py
-  - The application will prompt you to enter a location in Nairobi
-    ▶ Code Structure
+  - The application will prompt you to enter a location in Nairobi.
+
+ ▶ Code Structure
 - Hospital Class: An OOP class that defines the structure of a hospital object, including properties like name, rating and a method to display reviews.
 -  fetch_hospitals() function" this one handles the API interaction from geocoding the user's location to retrieving nearby places and fetching and detailed information.
+
+  # Read more:
+  - https://tracyouma.hashnode.dev/building-a-simple-hospital-finder-with-python-and-google-maps-api
